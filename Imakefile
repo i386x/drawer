@@ -1,0 +1,26 @@
+XCOMM
+XCOMM Imakefile for GUX2011 project #1
+XCOMM
+
+#include <Motif.tmpl>
+#include <Motif.rules>
+
+CXX             = g++
+XCOMM
+XCOMM `-pedantic` switch removed for compatibility with eva.fit.vutbr.cz
+XCOMM (no long long support in ISO C++ standard)
+XCOMM
+CXXOPTIONS      = -std=c++98 -Wall -W -Wextra
+CC              = g++
+CDEBUGFLAGS     =
+EXTRA_LDOPTIONS = -W -Wall -Wextra
+
+LOCAL_LIBRARIES = XmClientLibs
+
+MSimpleProgramTarget(draw)
+
+draw.o: draw.cc draw.hh
+	$(CXX) $(CXXFLAGS) -c -o $@ draw.cc
+
+clean::
+	$(RM) Makefile
